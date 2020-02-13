@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="fragments/head :: head"></head>
+
+<body>
+    <div class="wrapper">
+
+        <header th:replace="fragments/pageHeader :: header"></header>
+
+        <main>
+            <h2>[[${message}]]</h2>
+
+            <div id="app"></div>
+        </main>
+
+        <footer>
+            <div id="demo"></div>
+            <button type="button" onclick="loadXMLDoc()"> GET CONTENT</button>
+        </footer>
+    </div>
+
+    <script th:each="name : ${listJS}" th:src="'app-webpack/dist/' + ${name}"></script>
+
+    <script th:src="${isDevMode} ? 'http://localhost:8081' : 'app-webpack/dist/main_e404c7c92a86c5455d76.js'"></script>
+
+    <script  th:inline="javascript">
+        // <![CDATA[
+//        document.write('test message: ' + [[${frontendData.get("name")}]]);
+
+        function loadXMLDoc() {
+            var xmlhttp = new XMLHttpRequest();
+            var url = "/user/getAll";
+            xmlhttp.onload = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == "200") {
+                    document.getElementById("demo").innerHTML = this.responseText;
+                }
+            }
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+        }
+        // ]]>
+    </script>
+
+</body>
+</html>

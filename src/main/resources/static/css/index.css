@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    width: 900px;
+    margin: auto;
+}
+
+.nav__list {
+    list-style: none;
+    background-color: lightseagreen;
+    padding: 10px;
+}
+
+.nav__item {
+    display: inline-block;
+    margin: 0 5px;
+    color: #ffffff;
+}
+
+.nav__item:hover {
+    background-color: #66e4dd;
+    color: #000000;
+}
+
+.nav__item a {
+    display: block;
+    padding: 5px 10px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.form__create_user fieldset {
+    padding: 10px;
+}
+
